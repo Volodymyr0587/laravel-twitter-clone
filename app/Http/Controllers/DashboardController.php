@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $ideas = Idea::latest()->get();
+        $ideas = Idea::latest()->paginate(5);
 
         return view('dashboard', compact('ideas'));
     }
