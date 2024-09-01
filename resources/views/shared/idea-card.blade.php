@@ -13,7 +13,8 @@
                 <form action="{{ route('ideas.destroy', $idea) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm">X</button>
+                    <a href="{{ route('ideas.show', $idea) }}">View</a>
+                    <button class="ms-1 btn btn-danger btn-sm">X</button>
                 </form>
             </div>
         </div>
