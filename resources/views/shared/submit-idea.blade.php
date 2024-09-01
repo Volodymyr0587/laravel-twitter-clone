@@ -1,6 +1,6 @@
 <h4> Share yours ideas </h4>
 <div class="row">
-    <form action="{{ route('idea.create') }}" method="post">
+    <form action="{{ route('ideas.store') }}" method="post">
         @csrf
         <div class="mb-3">
             <textarea class="form-control" name="content" id="content" rows="3">{{ old('content') }}</textarea>
