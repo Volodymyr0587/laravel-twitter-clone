@@ -9,12 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $idea = new Idea([
-            'content' => 'Hello Artisans!',
-        ]);
-
-        $idea->save();
-
         $ideas = Idea::latest()->get();
 
         return view('dashboard', compact('ideas'));
