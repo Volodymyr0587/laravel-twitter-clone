@@ -15,6 +15,6 @@ class IdeaController extends Controller
 
         Idea::create($data);
 
-        return to_route('dashboard')->with('message', 'Idea was created successfully');
+        return to_route('dashboard')->with('success', 'Idea was created successfully');
     }
 }
