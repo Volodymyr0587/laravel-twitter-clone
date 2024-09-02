@@ -11,6 +11,8 @@ class DashboardController extends Controller
     {
         $query = Idea::latest();
 
+        $search = '';
+
         //% Check if there is a search
         if (request()->has('search')) {
             request()->validate([
@@ -22,8 +24,8 @@ class DashboardController extends Controller
 
         $ideas = $query->paginate(5);
         // Pass the search term to the pagination links
-        $ideas->appends(['search' => request()->get('search', '')]);
+        $ideas->appends(['search' => $search]);
 
-        return view('dashboard', compact('ideas'));
+        return view('dashboard', compact('ideas', 'search'));
     }
 }

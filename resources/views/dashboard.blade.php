@@ -10,6 +10,7 @@
         @include('shared.success-message')
         @include('shared.submit-idea')
         <hr>
+        @include('shared.search-results-for-message')
         @foreach ($ideas as $idea)
             <div class="mt-3">
                 @include('shared.idea-card')
