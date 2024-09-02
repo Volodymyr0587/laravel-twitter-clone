@@ -15,7 +15,7 @@
                     @method('DELETE')
                     <a class="mx-2" href="{{ route('ideas.edit', $idea) }}">Edit</a>
                     <a href="{{ route('ideas.show', $idea) }}">View</a>
-                    <button class="ms-1 btn btn-danger btn-sm">X</button>
+                    <button class="ms-1 btn btn-danger btn-sm" onclick="return confirm('Are You Sure?');">X</button>
                 </form>
             </div>
         </div>
