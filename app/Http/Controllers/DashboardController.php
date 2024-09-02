@@ -9,8 +9,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $ideas = Idea::latest()->paginate(5);
+        $ideas = Idea::latest();
 
-        return view('dashboard', compact('ideas'));
+        //% Check if there is a search
+        if (request()->has('search')) {
+            request()->validate([
+                'search' => 'required|string|min:1|max:255'
+            ]);
+            $ideas = $ideas->where('content', 'LIKE', '%' . request()->get('search', '') . '%');
+        }
+
+
+        return view('dashboard', ['ideas' => $ideas->paginate(5)]);
     }
 }

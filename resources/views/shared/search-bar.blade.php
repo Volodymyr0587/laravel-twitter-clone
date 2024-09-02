@@ -3,8 +3,13 @@
         <h5 class="">Search</h5>
     </div>
     <div class="card-body">
-        <input placeholder="...
-                " class="form-control w-100" type="text" id="search">
-        <button class="btn btn-dark mt-2"> Search</button>
+        <form action="{{ route('dashboard') }}" method="GET">
+            <input placeholder="...
+            " class="form-control w-100" type="text" name="search" id="search">
+            @error('search')
+                <span class="d-block fs-6 text-danger mt-2">{{ $message }}</span>
+            @enderror
+            <button class="btn btn-dark mt-2"> Search</button>
+        </form>
     </div>
 </div>
