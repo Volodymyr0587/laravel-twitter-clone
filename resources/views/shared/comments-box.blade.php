@@ -1,4 +1,7 @@
 <div>
+    @auth
+
+
     <form action="{{ route('ideas.comments.store', $idea) }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -8,6 +11,7 @@
             <button type="submit" class="btn btn-primary btn-sm"> Post Comment </button>
         </div>
     </form>
+    @endauth
 
     <hr>
     @foreach ($idea->comments as $comment)

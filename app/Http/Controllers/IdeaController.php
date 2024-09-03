@@ -18,7 +18,7 @@ class IdeaController extends Controller
             'content' => 'required|string|min:2|max:1000',
         ]);
 
-        Idea::create($data);
+        auth()->user()->ideas()->create($data);
 
         return to_route('dashboard')->with('success', 'Idea was created successfully');
     }
