@@ -1,7 +1,5 @@
 <div>
     @auth
-
-
     <form action="{{ route('ideas.comments.store', $idea) }}" method="POST">
         @csrf
         <div class="mb-3">

@@ -14,13 +14,13 @@ Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('ideas.show')
 
 Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
 
-Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit'])->name('ideas.edit');
+Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit'])->middleware('auth')->name('ideas.edit');
 
-Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->name('ideas.update');
+Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->middleware('auth')->name('ideas.update');
 
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->middleware('auth')->name('ideas.destroy');
 
-Route::post('/ideas/{idea}/comments', [CommentController::class, 'store'])->name('ideas.comments.store');
+Route::post('/ideas/{idea}/comments', [CommentController::class, 'store'])->middleware('auth')->name('ideas.comments.store');
 
 //% Registraion
 Route::get('/register', [AuthController::class, 'register'])->name('register');
