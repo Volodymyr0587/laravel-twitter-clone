@@ -8,15 +8,24 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+                @auth
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    <a class="nav-link" href="/profile">{{ auth()->user()->name }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="nav-link">Logout</button>
+                    </form>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
+                @endauth
             </ul>
         </div>
     </div>
