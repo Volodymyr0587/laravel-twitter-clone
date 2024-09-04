@@ -10,17 +10,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('ideas.show');
+Route::group(['prefix' => 'ideas', 'as' => 'ideas.'], function () {
 
-Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
+    Route::post('/', [IdeaController::class, 'store'])->name('store');
 
-Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit'])->middleware('auth')->name('ideas.edit');
+    Route::get('/{idea}', [IdeaController::class, 'show'])->name('show');
 
-Route::put('/ideas/{idea}', [IdeaController::class, 'update'])->middleware('auth')->name('ideas.update');
+    Route::group(['midleware' => ['auth']], function () {
 
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->middleware('auth')->name('ideas.destroy');
+        Route::get('/{idea}/edit', [IdeaController::class, 'edit'])->name('edit');
 
-Route::post('/ideas/{idea}/comments', [CommentController::class, 'store'])->middleware('auth')->name('ideas.comments.store');
+        Route::put('/{idea}', [IdeaController::class, 'update'])->name('update');
+
+        Route::delete('/{idea}', [IdeaController::class, 'destroy'])->name('destroy');
+
+        Route::post('/{idea}/comments', [CommentController::class, 'store'])->name('comments.store');
+    });
+});
+
 
 //% Registraion
 Route::get('/register', [AuthController::class, 'register'])->name('register');
