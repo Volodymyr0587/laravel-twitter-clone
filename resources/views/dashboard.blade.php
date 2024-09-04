@@ -17,7 +17,7 @@
             </div>
         @endforeach
         <div class="m-4">
-            {{ $ideas->links() }}
+            {{ $ideas->withQueryString()->links() }}
         </div>
     </div>
     <div class="col-3">
