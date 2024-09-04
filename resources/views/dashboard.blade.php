@@ -11,11 +11,13 @@
         @include('shared.submit-idea')
         <hr>
         @include('shared.search-results-for-message')
-        @foreach ($ideas as $idea)
+        @forelse ($ideas as $idea)
             <div class="mt-3">
                 @include('shared.idea-card')
             </div>
-        @endforeach
+        @empty
+            <p class="text-center my-3">No Results Found</p>
+        @endforelse
         <div class="m-4">
             {{ $ideas->withQueryString()->links() }}
         </div>

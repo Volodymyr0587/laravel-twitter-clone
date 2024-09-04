@@ -4,8 +4,8 @@
     </div>
     <div class="card-body">
         <form action="{{ route('dashboard') }}" method="GET">
-            <input placeholder="...
-            " class="form-control w-100" type="text" name="search" id="search">
+            <input placeholder="..." value="{{ request('search', '') }}"
+            class="form-control w-100" type="text" name="search" id="search">
             @error('search')
                 <span class="d-block fs-6 text-danger mt-2">{{ $message }}</span>
             @enderror
