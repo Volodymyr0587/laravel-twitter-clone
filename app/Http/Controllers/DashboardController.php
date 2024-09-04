@@ -24,7 +24,7 @@ class DashboardController extends Controller
 
         $ideas = $query->paginate(5);
         // Pass the search term to the pagination links
-        $ideas->appends(['search' => $search]);
+        // $ideas->appends(['search' => $search]);
 
         return view('dashboard', compact('ideas', 'search'));
     }
