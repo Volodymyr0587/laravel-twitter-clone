@@ -45,7 +45,7 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('profile', 'public');
 
-            Storage::disk('public')->delete($user->image);
+            Storage::disk('public')->delete($user->image ?? '');
         }
 
         $user->update($data);
