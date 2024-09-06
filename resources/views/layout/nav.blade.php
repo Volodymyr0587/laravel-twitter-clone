@@ -10,20 +10,20 @@
             <ul class="navbar-nav">
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile') }}">{{ auth()->user()->name }}</a>
+                    <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}" href="{{ route('profile') }}">{{ auth()->user()->name }}</a>
                 </li>
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="nav-link">Logout</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
                     </form>
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}" aria-current="page" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
                 </li>
                 @endauth
             </ul>
