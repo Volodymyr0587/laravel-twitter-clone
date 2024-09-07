@@ -10,7 +10,7 @@
                     <span>Explore</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ request()->routeIs('feed') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('feed') }}">
                     <span>Feed</span></a>
             </li>
             <li class="nav-item">
