@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedController;
@@ -35,3 +36,6 @@ Route::get('/feed', FeedController::class)->middleware(['auth'])->name('feed');
 Route::get('/terms', function () {
     return view('terms');
 })->name('terms');
+
+//% ADMIN
+Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
