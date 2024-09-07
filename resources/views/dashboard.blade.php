@@ -8,12 +8,12 @@
     </div>
     <div class="col-6">
         @include('shared.success-message')
-        @include('shared.submit-idea')
+        @include('ideas.shared.submit-idea')
         <hr>
         @include('shared.search-results-for-message')
         @forelse ($ideas as $idea)
             <div class="mt-3">
-                @include('shared.idea-card')
+                @include('ideas.shared.idea-card')
             </div>
         @empty
             <p class="text-center my-3">No Results Found</p>
