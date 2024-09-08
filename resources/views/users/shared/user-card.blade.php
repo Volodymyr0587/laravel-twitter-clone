@@ -9,11 +9,9 @@
                         </a></h3>
                     <span class="fs-6 text-muted">{{ $user->email }}</span>
                     <div>
-                        @auth
-                        @if (auth()->id() === $user->id)
-                        <a href="{{ route('users.edit', $user) }}">Edit</a>
+                        @can('update', $user)
+                            <a href="{{ route('users.edit', $user) }}">Edit</a>
                         @endif
-                        @endauth
                     </div>
                 </div>
             </div>
@@ -25,7 +23,7 @@
             </p>
             @include('users.shared.user-stats')
             @auth
-            @if (auth()->id() !== $user->id)
+            @if (auth()->user()->isNot($user))
             <div class="mt-3">
                 @if (Auth::user()->follows($user))
                     <form action="{{ route('users.unfollow', $user) }}" method="POST">
