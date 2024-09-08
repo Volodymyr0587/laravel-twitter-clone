@@ -6,6 +6,7 @@ use App\Models\Idea;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,15 +29,6 @@ class AppServiceProvider extends ServiceProvider
         //% Role
         Gate::define('admin', function (User $user) : bool {
             return (bool) $user->is_admin;
-        });
-
-        //% Permissions
-        Gate::define('idea.delete', function (User $user, Idea $idea) : bool {
-            return (bool) $user->is_admin || $idea->user->is($user);
-        });
-
-        Gate::define('idea.edit', function (User $user, Idea $idea) : bool {
-            return (bool) $user->is_admin || $idea->user->is($user);
         });
     }
 }

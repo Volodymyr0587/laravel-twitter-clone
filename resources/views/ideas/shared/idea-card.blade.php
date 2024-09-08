@@ -12,7 +12,7 @@
             </div>
             <div>
                 <a href="{{ route('ideas.show', $idea) }}">View</a>
-                @can('idea.delete', $idea)
+                @can('update', $idea)
                     <form action="{{ route('ideas.destroy', $idea) }}" method="POST">
                         @csrf
                         @method('DELETE')
