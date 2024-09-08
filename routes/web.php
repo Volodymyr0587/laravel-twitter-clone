@@ -38,4 +38,4 @@ Route::get('/terms', function () {
 })->name('terms');
 
 //% ADMIN
-Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
+Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'can:admin'])->name('admin.dashboard');

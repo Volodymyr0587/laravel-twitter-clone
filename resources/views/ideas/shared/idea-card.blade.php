@@ -11,13 +11,15 @@
                 </div>
             </div>
             <div>
-                <form action="{{ route('ideas.destroy', $idea) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <a class="mx-2" href="{{ route('ideas.edit', $idea) }}">Edit</a>
-                    <a href="{{ route('ideas.show', $idea) }}">View</a>
-                    <button class="ms-1 btn btn-danger btn-sm" onclick="return confirm('Are You Sure?');">X</button>
-                </form>
+                <a href="{{ route('ideas.show', $idea) }}">View</a>
+                @can('idea.delete', $idea)
+                    <form action="{{ route('ideas.destroy', $idea) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <a class="mx-2" href="{{ route('ideas.edit', $idea) }}">Edit</a>
+                        <button class="ms-1 btn btn-danger btn-sm" onclick="return confirm('Are You Sure?');">X</button>
+                    </form>
+                @endcan
             </div>
         </div>
     </div>
