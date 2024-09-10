@@ -28,6 +28,8 @@
         </ul>
     </div>
     <div class="card-footer text-center py-2">
-        <a class="btn btn-link btn-sm {{ request()->routeIs('profile') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('profile') }}">View Profile </a>
+        <a class="btn btn-link btn-sm {{ session()->get('locale') == 'en' ? 'text-white bg-primary rounded' : '' }}" href="{{ route('lang', 'en') }}">EN</a>
+        <a class="btn btn-link btn-sm {{ session()->get('locale') == 'uk' ? 'text-white bg-primary rounded' : '' }}" href="{{ route('lang', 'uk') }}">UA</a>
+
     </div>
 </div>

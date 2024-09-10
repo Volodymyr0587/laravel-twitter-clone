@@ -10,6 +10,16 @@ use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+// //% Locale
+Route::get('lang/{lang?}', function ($lang = null) {
+
+    app()->setLocale($lang);
+    session()->put('locale', $lang);
+
+    // setcookie('locale', $lang, time() + 60 * 60 * 24 * 30); // Set cookie for 30 days
+
+    return back();
+})->name('lang');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
