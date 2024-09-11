@@ -26,7 +26,7 @@ class FeedController extends Controller
                 'search' => 'required|string|min:1|max:255'
             ]);
             $search = request()->get('search', '');
-            $query = $query->where('content', 'LIKE', "%{$search}%");
+            $query = $query = $query->search($search);
         }
 
         $ideas = $query->paginate(5);
