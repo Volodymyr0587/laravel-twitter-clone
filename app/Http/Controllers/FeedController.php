@@ -14,22 +14,23 @@ class FeedController extends Controller
     {
         $user = auth()->user();
 
+        //% Get the IDs of users that the authenticated user is following
         $followingIDs = $user->followings()->pluck('user_id');
 
-        $query = Idea::whereIn('user_id', $followingIDs)->latest();
+        //% Validate the search input
+        $request->validate([
+            'search' => 'nullable|string|min:1|max:255'
+        ]);
 
-        $search = '';
+        //% Retrieve the search query from the request
+        $search = $request->input('search', '');
 
-        //% Check if there is a search
-        if (request()->has('search')) {
-            request()->validate([
-                'search' => 'required|string|min:1|max:255'
-            ]);
-            $search = request()->get('search', '');
-            $query = $query = $query->search($search);
-        }
-
-        $ideas = $query->paginate(5);
+        //% Query the ideas of the followed users and apply the search scope
+        $ideas = Idea::whereIn('user_id', $followingIDs)
+            ->latest()
+            ->search($search)  //% Use the scopeSearch here
+            ->paginate(2)
+            ->appends(['search' => $search]);  //% Persist search in pagination links
 
         return view('dashboard', compact('ideas', 'search'));
     }
