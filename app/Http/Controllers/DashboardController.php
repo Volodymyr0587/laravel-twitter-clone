@@ -10,22 +10,19 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $query = Idea::latest();
+        //% Validate the search input if present
+        request()->validate([
+            'search' => 'nullable|string|min:1|max:255'
+        ]);
 
-        $search = '';
+        $search = request('search', '');
 
-        //% Check if there is a search
-        if (request()->has('search')) {
-            request()->validate([
-                'search' => 'required|string|min:1|max:255'
-            ]);
-            $search = request()->get('search', '');
-            $query = $query->search($search);
-        }
-
-        $ideas = $query->paginate(5);
-        // Pass the search term to the pagination links
-        // $ideas->appends(['search' => $search]);
+        $ideas = Idea::latest()
+            ->when($search, function ($query, $search): void {
+                $query->search($search);
+            })
+            ->paginate(5)
+            ->appends(['search' => $search]);
 
         return view('dashboard', compact('ideas', 'search'));
     }
