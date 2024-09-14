@@ -11,6 +11,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\IdeaController as AdminIdeaController;
 
 // //% Locale
 Route::get('lang/{lang?}', LanguageController::class)->name('lang');
@@ -44,6 +45,7 @@ Route::get('/terms', function () {
 //% ADMIN
 Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [AdminUserController::class, 'index'])->name('users');
+    Route::resource('users', AdminUserController::class)->only('index');
 
+    Route::resource('ideas', AdminIdeaController::class)->only('index');
 });

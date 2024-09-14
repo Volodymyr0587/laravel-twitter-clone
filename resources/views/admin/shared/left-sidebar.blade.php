@@ -3,11 +3,18 @@
         <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('admin.dashboard') }}">
-                    <span>{{ __("Dashboard") }}</span></a>
+                    <span>{{ __("Dashboard") }}</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.users') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('admin.users') }}">
-                    <span>{{ __("Users") }}</span></a>
+                <a class="nav-link {{ request()->routeIs('admin.users.index') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('admin.users.index') }}">
+                    <span>{{ __("Users") }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.ideas.index') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('admin.ideas.index') }}">
+                    <span>{{ __("Ideas") }}</span>
+                </a>
             </li>
 
         </ul>
