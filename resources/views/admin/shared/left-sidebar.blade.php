@@ -16,6 +16,11 @@
                     <span>{{ __("Ideas") }}</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.comments.index') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('admin.comments.index') }}">
+                    <span>{{ __("Comments") }}</span>
+                </a>
+            </li>
 
         </ul>
     </div>

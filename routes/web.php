@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\IdeaController as AdminIdeaController;
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 
 // //% Locale
 Route::get('lang/{lang?}', LanguageController::class)->name('lang');
@@ -48,4 +49,6 @@ Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(
     Route::resource('users', AdminUserController::class)->only('index');
 
     Route::resource('ideas', AdminIdeaController::class)->only('index');
+
+    Route::resource('comments', AdminCommentController::class)->only('index', 'destroy');
 });
