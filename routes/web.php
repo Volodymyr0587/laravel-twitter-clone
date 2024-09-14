@@ -10,6 +10,7 @@ use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // //% Locale
 Route::get('lang/{lang?}', LanguageController::class)->name('lang');
@@ -41,4 +42,8 @@ Route::get('/terms', function () {
 })->name('terms');
 
 //% ADMIN
-Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'can:admin'])->name('admin.dashboard');
+Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/users', [AdminUserController::class, 'index'])->name('users');
+
+});
