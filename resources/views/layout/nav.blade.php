@@ -11,7 +11,7 @@
                 @auth
                 @if (Auth::user()->is_admin)
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">{{ __('nav.admin_dashboard') }}</a>
                 </li>
                 @endif
                 <li class="nav-item">
@@ -20,15 +20,15 @@
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                        <button type="submit" class="btn btn-danger btn-sm">{{ __('nav.logout') }}</button>
                     </form>
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}" aria-current="page" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}" aria-current="page" href="{{ route('login') }}">{{ __('nav.login') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">{{ __('nav.register') }}</a>
                 </li>
                 @endauth
             </ul>

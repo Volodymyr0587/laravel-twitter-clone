@@ -3,27 +3,27 @@
         <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('dashboard') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('dashboard') }}">
-                    <span>Home</span></a>
+                    <span>{{ __('sidebar.home') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span>Explore</span></a>
+                    <span>{{ __('sidebar.explore') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('feed') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('feed') }}">
-                    <span>Feed</span></a>
+                    <span>{{ __('sidebar.feed') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('terms') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('terms') }}">
-                    <span>Terms</span></a>
+                    <span>{{ __('sidebar.terms') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span>Support</span></a>
+                    <span>{{ __('sidebar.support') }}</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span>Settings</span></a>
+                    <span>{{ __('sidebar.settings') }}</span></a>
             </li>
         </ul>
     </div>
