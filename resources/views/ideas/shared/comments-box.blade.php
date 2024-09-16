@@ -6,7 +6,7 @@
             <textarea name="content" class="fs-6 form-control" rows="1"></textarea>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary btn-sm"> Post Comment </button>
+            <button type="submit" class="btn btn-primary btn-sm"> {{ __('buttons.post_comment') }} </button>
         </div>
     </form>
     @endauth
@@ -28,6 +28,6 @@
         </div>
     </div>
     @empty
-    <p class="text-center mt-4">There are no comments yet</p>
+    <p class="text-center mt-4">{{ __('ideas.no_comments') }}</p>
     @endforelse
 </div>

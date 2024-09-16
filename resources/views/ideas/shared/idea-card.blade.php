@@ -11,13 +11,13 @@
                 </div>
             </div>
             <div>
-                <a href="{{ route('ideas.show', $idea) }}">View</a>
+                <a href="{{ route('ideas.show', $idea) }}">{{ __('buttons.view') }}</a>
                 @can('update', $idea)
                     <form action="{{ route('ideas.destroy', $idea) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a class="mx-2" href="{{ route('ideas.edit', $idea) }}">Edit</a>
-                        <button class="ms-1 btn btn-danger btn-sm" onclick="return confirm('Are You Sure?');">X</button>
+                        <a class="mx-2" href="{{ route('ideas.edit', $idea) }}">{{ __('buttons.edit') }}</a>
+                        <button class="ms-1 btn btn-danger btn-sm" onclick="return confirm('{{ __('buttons.are_you_sure') }}');">X</button>
                     </form>
                 @endcan
             </div>
@@ -35,7 +35,7 @@
                 @enderror
             </div>
             <div class="">
-                <button type="submit" class="btn btn-sm btn-dark mb-2"> Update </button>
+                <button type="submit" class="btn btn-sm btn-dark mb-2"> {{ __('buttons.update') }} </button>
             </div>
         </form>
         @else

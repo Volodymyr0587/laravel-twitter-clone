@@ -6,4 +6,5 @@ return [
     'share_your_ideas' => 'Share yours ideas',
     'search' => 'Search',
     'share' => 'Share',
+    'no_comments' => 'There are no comments yet',
 ];

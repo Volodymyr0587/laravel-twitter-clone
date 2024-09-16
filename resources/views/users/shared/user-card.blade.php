@@ -10,7 +10,7 @@
                     <span class="fs-6 text-muted">{{ $user->email }}</span>
                     <div>
                         @can('update', $user)
-                            <a href="{{ route('users.edit', $user) }}">Edit</a>
+                            <a href="{{ route('users.edit', $user) }}">{{ __('buttons.edit') }}</a>
                         @endif
                     </div>
                 </div>
@@ -28,12 +28,12 @@
                 @if (Auth::user()->follows($user))
                     <form action="{{ route('users.unfollow', $user) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-danger btn-sm"> Unfollow </button>
+                        <button type="submit" class="btn btn-danger btn-sm"> {{ __('buttons.unfollow') }} </button>
                     </form>
                 @else
                     <form action="{{ route('users.follow', $user) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-primary btn-sm"> Follow </button>
+                        <button type="submit" class="btn btn-primary btn-sm"> {{ __('buttons.follow') }} </button>
                     </form>
                 @endif
             </div>

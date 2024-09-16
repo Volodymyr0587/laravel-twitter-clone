@@ -1,6 +1,6 @@
 <div class="card mt-3">
     <div class="card-header pb-0 border-0">
-        <h5 class="">Top Users</h5>
+        <h5 class="">{{ __('follow-box.top_users') }}</h5>
     </div>
     <div class="card-body">
         @foreach ($topUsers as $user)
@@ -18,7 +18,7 @@
             </div>
         @endforeach
         <div class="d-grid mt-3">
-            <a class="btn btn-sm btn-primary-soft" href="#!">Show More</a>
+            <a class="btn btn-sm btn-primary-soft" href="#!">{{ __('follow-box.show_more') }}</a>
         </div>
     </div>
 </div>
